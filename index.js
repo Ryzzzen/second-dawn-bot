@@ -8,8 +8,9 @@ require('http').createServer(function (req, res) {
 }).listen(process.env.PORT || 3000);
 
 setInterval(() => {
-  
-}, 3000*1000)
+  console.log('Making heroku request..');
+  require('https').get('https://second-dawn-bot.herokuapp.com/');
+}, Math.random() * (3600*1000 - 100*1000) + 100*1000);
 
 async function createChannelsIfNecessary(old, backup) {
   console.log('Creating required channels');
