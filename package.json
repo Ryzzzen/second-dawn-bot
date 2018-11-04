@@ -1,0 +1,28 @@
+{
+  "name": "second-dawn-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryzzzen/second-dawn-bot.git"
+  },
+  "keywords": [
+    "Backup",
+    "Discord",
+    "bot"
+  ],
+  "author": "Ryzzzen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryzzzen/second-dawn-bot/issues"
+  },
+  "homepage": "https://github.com/Ryzzzen/second-dawn-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
