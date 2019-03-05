@@ -1,39 +1,38 @@
+/* Module configurations */
+require('dotenv').config();
+require('moment').locale(process.env.LOCALE);
+/* Module configurations */
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-/* Makes this bot work on Heroku */
-require('http').createServer(function (req, res) {
-  res.write('Hello World!');
-  res.end();
-}).listen(process.env.PORT || 3000);
+const Dawn = new (require('./class/Dawn'))(client);
 
-setInterval(() => {
-  console.log('Making heroku request..');
-  require('https').get('https://second-dawn-bot.herokuapp.com/');
-}, Math.random() * (3600*1000 - 100*1000) + 100*1000);
+Dawn.on('shutdown', async () => {
+  console.log('Shutting down core modules.');
 
-async function createChannelsIfNecessary(old, backup) {
-  console.log('Creating required channels');
-  await Promise.all(old.channels.filter(x => !backup.channels.find(y => y.name === x.name)).map(x => backup.createChannel(x.name, x.type, x.permissionOverwrites.values())));
-
-  old.channels.filter(x => x.parent).forEach(x => {
-    backup.channels.find(y => y.name === x.name).setParent(backup.channels.find(y => y.name === x.parent.name && y.type === 'category'));
-  });
-}
-
-client.on('ready', async () => {
-  const old = client.guilds.find(x => x.id === '263831002382598144');
-  const backup = client.guilds.find(x => x.id === '508436055285039104');
-
-  console.log(`Ready to backup from ${old.name} to ${backup.name}!`);
-
-  await createChannelsIfNecessary(old, backup);
-  client.on('message', async message => {
-    if (message.guild.id === backup.id) return;
-    await createChannelsIfNecessary(old, backup);
-
-    backup.channels.find(x => x.name === message.channel.name).send(`<@${message.author.id}> > ${message.content}`, message.attachments.values());
-  });
+  await Dawn.shutdown();
+  await Dawn.client.destroy();
+  process.timeout(process.exit, 5000);
 });
 
-client.login(process.env.TOKEN);
+client.on('ready', async () => {
+  await Dawn.onReady(client);
+  console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of the guilds.`);
+});
+
+client.on('message', msg => Dawn.onMessage(msg));
+
+Dawn.load().then(x => client.login(process.env.DISCORD_TOKEN));
+
+if (process.env.FREE_HOST == true) {
+  const http = require('http');
+  http.createServer((req, res) => {
+    res.writeHead(200, {
+      'Content-type': 'text/plain'
+    });
+
+    res.write('working');
+    res.end();
+  }).listen(4000);
+}
