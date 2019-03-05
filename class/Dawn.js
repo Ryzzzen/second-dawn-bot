@@ -78,7 +78,6 @@ class Dawn extends EventEmitter {
     const prefix = args.shift().toLowerCase();
 
     console.log('[CommandExecuter] >> Received: \'' + content + '\' by ' + message.author.username);
-    console.log(prefix);
 
     let cmd = this.commands.find(x => x.prefixes.some(y => prefix === y));
 
@@ -117,7 +116,7 @@ class Dawn extends EventEmitter {
     .setTimestamp()
     .addField('Commande', message.content.trim());
 
-    return message.channel.send(embed);
+    message.channel.send(embed);
   }
 
   hasRole(id, level) {
