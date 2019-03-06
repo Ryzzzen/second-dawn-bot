@@ -21,7 +21,7 @@ class ApexModule extends Module {
           .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
           .setColor("#f1c40f")
           .setDescription("Commande: !apex-link <Nom du compte> [Plateforme]")
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .setTimestamp();
 
           return message.channel.send(embed);
@@ -40,7 +40,7 @@ class ApexModule extends Module {
           .setTimestamp()
           .setDescription('Utilisateur relié: **' + search[0].name + '**')
           .setThumbnail(search[0].avatar)
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .addField('Niveau', search[0].level, true)
           .addField('Plateforme', search[0].platform.toUpperCase(), true);
 
@@ -54,7 +54,7 @@ class ApexModule extends Module {
           .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
           .setColor("#f1c40f")
           .setDescription(err)
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .setTimestamp();
 
           return message.channel.send(embed);
@@ -72,7 +72,7 @@ class ApexModule extends Module {
             .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
             .setColor("#f1c40f")
             .setDescription("Impossible de vous retrouver! Réessayez avec la commande `!apex-link`")
-            .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+            .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
             .setTimestamp();
 
             return message.channel.send(embed);
@@ -85,7 +85,7 @@ class ApexModule extends Module {
           .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
           .setColor("#00b894")
           .setDescription(`*Statistiques actualisées ${moment(date).fromNow()}.*\nLes statistiques dépendent des trackers sur votre profil. Si vous enlevez le tracker de kills, ils ne seront plus affichés ici.`)
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .setTimestamp()
           .setThumbnail(search.avatar)
           .addField('Niveau', search.level, true)
@@ -105,7 +105,7 @@ class ApexModule extends Module {
           .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
           .setColor("#f1c40f")
           .setDescription("Commande: !apex-info <Nom du compte> [Plateforme]")
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .setTimestamp();
 
           return message.channel.send(embed);
@@ -120,7 +120,7 @@ class ApexModule extends Module {
           .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
           .setColor("#00b894")
           .setDescription(`${search.length} utilisateurs trouvés`)
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .setTimestamp();
 
           if (!search || search.length === 0)
@@ -149,7 +149,7 @@ class ApexModule extends Module {
           .setAuthor("Apex Companion", 'https://purepng.com/public/uploads/large/apex-legends-icon-high-resolution-scy.png')
           .setColor("#f1c40f")
           .setDescription(err)
-          .setFooter("Commande exécutée par " + message.author.username, 'https://i.imgur.com/cA0ExpQ.png')
+          .setFooter("Commande exécutée par " + message.author.username, message.author.avatarURL)
           .setTimestamp();
 
           return message.channel.send(embed);

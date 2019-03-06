@@ -22,6 +22,7 @@ client.on('ready', async () => {
 });
 
 client.on('message', msg => Dawn.onMessage(msg));
+client.on('error', console.error);
 
 Dawn.load().then(x => client.login(process.env.DISCORD_TOKEN));
 
